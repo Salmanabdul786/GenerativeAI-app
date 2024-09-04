@@ -145,13 +145,7 @@ app.use((err, req, res, next) => {
   console.error(err.stack);
   res.status(401).send("Unauthenticated!");
 });
-app.get("/", (req, res) => {
 
-  // Using send function we send
-  // response to the client
-  // Here we are sending html
-  res.send("<h1> Hello World </h1>");
-});
 
 
 app.use(express.static(path.join(__dirname, "../frontend/dist")));
