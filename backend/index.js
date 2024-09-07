@@ -7,7 +7,6 @@ import mongoose from "mongoose";
 import UserChats from "./models/userchat.js";
 import Chat from "./models/chat.js";
 import { ClerkExpressRequireAuth } from "@clerk/clerk-sdk-node";
-
 const port = process.env.PORT || 3000;
 const app = express();
 app.use(
@@ -154,12 +153,10 @@ app.get("/", (req, res) => {
 });
 
 
-app.use(express.static(path.join(__dirname, "../frontend")));
-
-app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname, "../frontend", "index.html"));
+app.use(express.static(path.join(__dirname,"../frontend/dist")));
+app.get("*",(req,res)=>{
+res.sendFile(path.join(__dirname,"../frontend/dist","index.html"));
 });
-
 
 
 
