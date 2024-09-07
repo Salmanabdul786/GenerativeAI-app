@@ -2,7 +2,6 @@ import express from "express";
 import ImageKit from "imagekit";
 import cors from "cors";
 import path from "path";
-import url, { fileURLToPath } from "url";
 import mongoose from "mongoose";
 import UserChats from "./models/userchat.js";
 import Chat from "./models/chat.js";
@@ -15,8 +14,9 @@ app.use(
     credentials: true,
   })
 );
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
+
+const __dirname=path.resolve();
+
 app.use(express.json());
 
 const connect = async () => {
@@ -144,15 +144,16 @@ app.use((err, req, res, next) => {
   console.error(err.stack);
   res.status(401).send("Unauthenticated!");
 });
-app.get("/", (req, res) => {
 
-  // Using send function we send
-  // response to the client
-  // Here we are sending html
-  res.send("<h1> Hello World </h1>");
+
+
+app.use(express.static(path.join(__dirname,"../frontend/dist")));
+app.get("*",(req,res)=>{
+res.sendFile(path.join(__dirname,"../frontend","dist","index.html"));
 });
 
 
+<<<<<<< HEAD
 app.use(express.static(path.join(__dirname,"../frontend/dist")));
 app.get("*",(req,res)=>{
 res.sendFile(path.join(__dirname,"../frontend/dist","index.html"));
@@ -160,6 +161,8 @@ res.sendFile(path.join(__dirname,"../frontend/dist","index.html"));
 
 
 
+=======
+>>>>>>> 401c0ae2f4f95c6adfdad9c2cd6b48c65adad420
 
 app.listen(port, () => {
   connect();
