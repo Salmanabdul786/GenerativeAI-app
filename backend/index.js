@@ -2,7 +2,6 @@ import express from "express";
 import ImageKit from "imagekit";
 import cors from "cors";
 import path from "path";
-import url, { fileURLToPath } from "url";
 import mongoose from "mongoose";
 import UserChats from "./models/userchat.js";
 import Chat from "./models/chat.js";
@@ -16,7 +15,9 @@ app.use(
     credentials: true,
   })
 );
-const __dirname = path.dirname(__filename);
+
+const __dirname=path.resolve();
+
 app.use(express.json());
 
 const connect = async () => {
