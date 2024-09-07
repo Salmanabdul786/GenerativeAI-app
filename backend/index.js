@@ -153,7 +153,6 @@ res.sendFile(path.join(__dirname,"../frontend","dist","index.html"));
 });
 
 
-<<<<<<< HEAD
 app.use(express.static(path.join(__dirname,"../frontend/dist")));
 app.get("*",(req,res)=>{
 res.sendFile(path.join(__dirname,"../frontend/dist","index.html"));
@@ -161,8 +160,6 @@ res.sendFile(path.join(__dirname,"../frontend/dist","index.html"));
 
 
 
-=======
->>>>>>> 401c0ae2f4f95c6adfdad9c2cd6b48c65adad420
 
 app.listen(port, () => {
   connect();
